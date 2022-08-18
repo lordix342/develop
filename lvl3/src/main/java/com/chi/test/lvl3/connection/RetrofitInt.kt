@@ -11,7 +11,7 @@ import retrofit2.http.GET
 
 interface RetrofitInt {
     @GET("v1/forecast.json?key=bdbb753421a44e00a37171142222106&days=5&aqi=no&alerts=no")
-    suspend fun getWeather(): Response<Array<ModelZooItem>>
+    suspend fun getZoo(): Response<Array<ModelZooItem>>
 }
 
 object ApiInstance {
@@ -38,6 +38,6 @@ object ApiInstance {
 }
 class ApiRepo {
     suspend fun getZooItem(): Response<Array<ModelZooItem>> {
-        return ApiInstance.api.getWeather()
+        return ApiInstance.api.getZoo()
     }
 }

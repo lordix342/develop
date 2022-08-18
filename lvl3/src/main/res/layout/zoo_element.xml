@@ -9,10 +9,12 @@
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="29dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -23,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxFavorite"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -34,6 +38,18 @@
         android:layout_marginTop="20dp"
         android:text="diet"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxFavorite"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textName3" />
+
+    <CheckBox
+        android:id="@+id/checkBoxFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:button="@drawable/custom_checkbox_favorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,35 +1,24 @@
 package com.chi.test.lvl3.models
 
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "ZooItem")
 data class ModelZooItem(
-    @SerializedName("active_time")
-    val activeTime: String,
-    @SerializedName("animal_type")
-    val animalType: String,
+    @PrimaryKey(autoGenerate = true)
+    val id : Int? = null,
+    @ColumnInfo(name = "diet")
     @SerializedName("diet")
     val diet: String,
-    @SerializedName("geo_range")
-    val geoRange: String,
-    @SerializedName("habitat")
-    val habitat: String,
-    @SerializedName("id")
-    val id: Int,
+    @ColumnInfo(name = "image")
     @SerializedName("image_link")
     val imageLink: String,
-    @SerializedName("latin_name")
-    val latinName: String,
-    @SerializedName("length_max")
-    val lengthMax: String,
-    @SerializedName("length_min")
-    val lengthMin: String,
-    @SerializedName("lifespan")
-    val lifespan: String,
+    @ColumnInfo(name = "name")
     @SerializedName("name")
     val name: String,
-    @SerializedName("weight_max")
-    val weightMax: String,
-    @SerializedName("weight_min")
-    val weightMin: String
+    @ColumnInfo(name = "favorite")
+    var favorite: Boolean = false
 )

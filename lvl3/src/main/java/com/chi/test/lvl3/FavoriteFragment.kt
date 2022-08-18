@@ -1,6 +1,5 @@
 package com.chi.test.lvl3
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,17 +9,19 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chi.test.lvl3.adapters.ClickListener
 import com.chi.test.lvl3.adapters.ZooAdapter
-import com.chi.test.lvl3.databinding.FragmentBlankBinding
+import com.chi.test.lvl3.databinding.FragmentFavoriteBinding
 import com.chi.test.lvl3.models.ModelZooItem
 
-class BlankFragment : Fragment(), ClickListener {
-    private lateinit var binding : FragmentBlankBinding
+
+class FavoriteFragment : Fragment(), ClickListener {
+    private lateinit var binding : FragmentFavoriteBinding
     private val viewModel : ZooViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBlankBinding.inflate(inflater)
+        binding = FragmentFavoriteBinding.inflate(inflater)
         return binding.root
     }
 
@@ -30,20 +31,12 @@ class BlankFragment : Fragment(), ClickListener {
         val adapter = ZooAdapter(requireContext(), this)
         viewModel.zooItem.observe(viewLifecycleOwner) {
             if (it!=null) {
-                binding.rcViewZoo.adapter = adapter
-                binding.rcViewZoo.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcFavorites.adapter = adapter
+                binding.rcFavorites.layoutManager = LinearLayoutManager(requireContext())
                 adapter.setData(it)
             }
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.rcViewZoo.setOnScrollChangeListener { v, _, scrollY, _, _ ->
-                if (scrollY == v.measuredHeight) {
-                    viewModel.updatePaging()
-                }
-            }
-        }
     }
-
     override fun onCheck(zooItem: ModelZooItem) {
         viewModel.updateDb(zooItem)
     }

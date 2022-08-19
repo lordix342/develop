@@ -1,4 +1,4 @@
-package com.chi.test.lvl2
+package com.chi.test.lvl2.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -13,5 +13,9 @@ data class ModelStudent (
     @ColumnInfo(name = "age")
     val age: Int,
     @ColumnInfo(name = "isStudent")
-    var isStudent: Boolean
+    var isStudent: Boolean,
+    @ColumnInfo(name = "date")
+    var date: String,
+    @ColumnInfo(name = "description")
+    var description: String?
     )

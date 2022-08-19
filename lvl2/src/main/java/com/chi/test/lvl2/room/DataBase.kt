@@ -1,4 +1,4 @@
-package com.chi.test.lvl2
+package com.chi.test.lvl2.room
 
 import android.content.Context
 import androidx.room.Database

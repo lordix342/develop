@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chi.test.lvl2.databinding.StudentElementBinding
+import com.chi.test.lvl2.room.ModelStudent
 
 class StudentAdapter(private val clickListener: ClickListener) : RecyclerView.Adapter<StudentAdapter.ItemHolder>() {
 
@@ -20,6 +21,10 @@ class StudentAdapter(private val clickListener: ClickListener) : RecyclerView.Ad
             checkBox.isChecked = student.isStudent
             textName.setOnClickListener {
                 clickListener.onClick(student)
+            }
+            textName.setOnLongClickListener{
+                clickListener.onLongClick(student)
+                true
             }
             checkBox.setOnClickListener {
                 checkBox.isChecked = !checkBox.isChecked
@@ -52,4 +57,5 @@ class StudentAdapter(private val clickListener: ClickListener) : RecyclerView.Ad
 interface ClickListener {
     fun onClick(student: ModelStudent)
     fun onCheck(student: ModelStudent)
+    fun onLongClick(student: ModelStudent)
 }

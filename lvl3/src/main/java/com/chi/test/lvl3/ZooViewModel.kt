@@ -14,6 +14,7 @@ class ZooViewModel(application: Application) : AndroidViewModel(application) {
     private val connection = ResultConnection(application.applicationContext)
     private val repository = ApiRepo()
     var zooItem = MutableLiveData<ArrayList<ModelZooItem>>()
+    var zooItemFavorites = MutableLiveData<ArrayList<ModelZooItem>>()
 
     fun getZoo() {
         viewModelScope.launch {
@@ -45,6 +46,12 @@ class ZooViewModel(application: Application) : AndroidViewModel(application) {
                     dataBase.zooDao().insertToDB(it)
                 }
             }
+        }
+    }
+
+    fun getFavorites() {
+        viewModelScope.launch {
+            zooItemFavorites.value = zooItem.value?.filter { it.favorite }?.toCollection(ArrayList())
         }
     }
 }

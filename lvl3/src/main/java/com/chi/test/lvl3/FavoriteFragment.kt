@@ -27,9 +27,9 @@ class FavoriteFragment : Fragment(), ClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getZoo()
+        viewModel.getFavorites()
         val adapter = ZooAdapter(requireContext(), this)
-        viewModel.zooItem.observe(viewLifecycleOwner) {
+        viewModel.zooItemFavorites.observe(viewLifecycleOwner) {
             if (it!=null) {
                 binding.rcFavorites.adapter = adapter
                 binding.rcFavorites.layoutManager = LinearLayoutManager(requireContext())
@@ -37,6 +37,7 @@ class FavoriteFragment : Fragment(), ClickListener {
             }
         }
     }
+
     override fun onCheck(zooItem: ModelZooItem) {
         viewModel.updateDb(zooItem)
     }
